@@ -180,9 +180,9 @@ class BounceHigh extends LXPattern {
   public void run(double deltaMs) {
     for (LXPoint p : model.points) {
       colors[p.index] = lx.hsb(
-        50,
+        90,
         100,
-        max(50, 100 - (100/size.getValuef()) * abs(p.y - py.getValuef()))
+        max(0, 100 - (100/size.getValuef()) * abs(p.y - py.getValuef()))
       );
     }
   }
