@@ -223,3 +223,27 @@ class Plasma extends LXPattern {
     }
   }
 }
+
+
+public class GraphicEqualizerPattern extends LXPattern {
+  
+  private final GraphicEQ eq;
+  
+  public GraphicEqualizerPattern(LX lx) {
+    super(lx);
+    addModulator(this.eq = new GraphicEQ(lx.audioInput())).start();
+    this.transition = new WipeTransition(lx, WipeTransition.Direction.UP);
+  }
+  
+  public void run(double deltaMs) {
+    for (int i = 0; i < this.lx.width; ++i) {
+      int avgIndex = (int) (i / (double) this.lx.width * (eq.numBands-1));
+      double value = eq.getBand(avgIndex);
+      for (int j = 0; j < this.lx.height; ++j) {
+        double jscaled = (this.lx.height - 1 - j) / (double)(this.lx.height-1);
+        double b = LXUtils.constrain(400. * (value - jscaled), 0, 100);
+      };
+    }
+  }
+  
+}
