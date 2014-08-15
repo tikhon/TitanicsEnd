@@ -242,7 +242,8 @@ public class GraphicEqualizerPattern extends LXPattern {
       for (int j = 0; j < this.lx.height; ++j) {
         double jscaled = (this.lx.height - 1 - j) / (double)(this.lx.height-1);
         double b = LXUtils.constrain(400. * (value - jscaled), 0, 100);
-      };
+        //this.setColor(i, j, this.lx.hsb(this.lx.getBaseHue(), 100., b));
+      }
     }
   }
   
