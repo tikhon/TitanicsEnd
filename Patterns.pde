@@ -257,7 +257,7 @@ class Cascade extends LXPattern {
       colors[p.index] = lx.hsb(
         (lx.getBaseHuef() + hShift + (p.x - model.cx)) % 360,
         100,
-        abs((lx.getBaseHuef() + hShift + (p.y - model.cy)) % 360)
+        (lx.getBaseHuef() + hShift + (p.y - model.cy)) % 360
       );
     }
   }
