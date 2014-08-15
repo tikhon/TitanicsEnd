@@ -159,6 +159,36 @@ class Bouncing extends LXPattern {
   }
 }
 
+class BounceHigh extends LXPattern {
+  
+  final BasicParameter size = new BasicParameter("SIZE", 1*FEET, 1*FEET, 5*FEET);
+  final BasicParameter rate = new BasicParameter("RATE", 3*SECONDS, 1.5*SECONDS, 6*SECONDS);
+  final BasicParameter max = new BasicParameter("MAX", 1.9*model.cy, 1.9*model.cy, 1.9*model.yMax);
+  final BasicParameter min = new BasicParameter("MIN", 0, 0, model.cy);
+  
+  final SinLFO py = new SinLFO(min, max, rate);
+  
+  BounceHigh(LX lx) {
+    super(lx);
+    addParameter(size);
+    addParameter(rate);
+    addParameter(min);
+    addParameter(max);
+    addModulator(py).start();
+  }
+  
+  public void run(double deltaMs) {
+    for (LXPoint p : model.points) {
+      colors[p.index] = lx.hsb(
+        50,
+        100,
+        max(50, 100 - (100/size.getValuef()) * abs(p.y - py.getValuef()))
+      );
+    }
+  }
+}
+
+
 class Plasma extends LXPattern {
   
   final BasicParameter speed = new BasicParameter("SPEED", 1, 0.1, 10);

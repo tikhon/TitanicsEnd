@@ -40,6 +40,7 @@ void setup() {
     new Plasma(lx),
     new Warp(lx),
     new Bouncing(lx),
+    new BounceHigh(lx),
     new AuroraBorealis(lx),
     new Periodicity(lx),
     new IteratorTestPattern(lx),
