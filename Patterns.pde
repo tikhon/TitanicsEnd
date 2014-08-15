@@ -223,3 +223,53 @@ class Plasma extends LXPattern {
     }
   }
 }
+
+
+
+
+abstract class OscillatorTest extends LXPattern {
+  LXRangeModulator env;
+  final BasicParameter rate = new BasicParameter("RATE", 2*SECONDS, 1*SECONDS, 4*SECONDS);
+
+  OscillatorTest(LX lx, LXRangeModulator rm) {
+    super(lx);
+    addParameter(rate);
+    addModulator(env = rm).trigger();
+  }
+  
+  public void run(double deltaMs) {
+    for (int i = 0; i < colors.length; ++i) {
+      colors[i] = color(
+        lx.getBaseHuef(),
+        100,
+        max(0, 100 - 30*abs(i - env.getValuef()))
+      );
+    }
+  }
+}
+
+class SawLFOTest extends OscillatorTest {
+  SawLFOTest(LX lx) {
+    super(lx, new SawLFO(0, lx.total, 1000));
+  }
+}
+
+class SinLFOTest extends OscillatorTest {
+  SinLFOTest(LX lx) {
+    super(lx, new SinLFO(0, lx.total, 1000));
+  }
+}
+
+class SquareLFOTest extends OscillatorTest {
+  SquareLFOTest(LX lx) {
+    super(lx, new SquareLFO(0, lx.total, 1000));
+  }
+}
+
+class TriangleLFOTest extends OscillatorTest {
+  TriangleLFOTest(LX lx) {
+    super(lx, new TriangleLFO(0, lx.total, 1000));
+  }
+}
+
+

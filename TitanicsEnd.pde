@@ -45,6 +45,10 @@ void setup() {
     new Periodicity(lx),
     new IteratorTestPattern(lx),
     new ParameterWave(lx),
+    new SawLFOTest(lx),
+    new SinLFOTest(lx),
+    new SquareLFOTest(lx),
+    new TriangleLFOTest(lx),
     // ...add your new patterns here
   });
   for (LXPattern pattern : patterns) {
