@@ -41,6 +41,8 @@ void setup() {
     new Warp(lx),
     new Bouncing(lx),
     new BounceHigh(lx),
+    new BounceColor(lx),
+    //new BounceTan(lx),
     new AuroraBorealis(lx),
     new Periodicity(lx),
     new IteratorTestPattern(lx),
