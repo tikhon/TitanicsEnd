@@ -40,13 +40,12 @@ void setup() {
     new Plasma(lx),
     new Warp(lx),
     new Bouncing(lx),
-    new BounceHigh(lx),
-    new BounceColor(lx),
-    //new BounceTan(lx),
     new AuroraBorealis(lx),
     new Periodicity(lx),
     new IteratorTestPattern(lx),
     new ParameterWave(lx),
+    new BounceHigh(lx),
+    new BounceColor(lx),
     // ...add your new patterns here
   });
   for (LXPattern pattern : patterns) {
