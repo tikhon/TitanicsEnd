@@ -45,6 +45,8 @@ void setup() {
     new Periodicity(lx),
     new IteratorTestPattern(lx),
     new ParameterWave(lx),
+    new GraphicEqualizerPattern(lx),
+
     // ...add your new patterns here
   });
   for (LXPattern pattern : patterns) {
