@@ -48,6 +48,8 @@ void setup() {
     new ParameterWave(lx),
     new BounceHigh(lx),
     new BounceColor(lx),
+    new BounceCrazy(lx),
+
     // ...add your new patterns here
   });
   for (LXPattern pattern : patterns) {
